@@ -12,13 +12,13 @@ function main () {
   let fPurisa = Font3D.parse(purisa_ttf_data.buffer);
   let cagPurisa = Font3D.cagFromString(fPurisa, "Hello", 14);
   let csgPurisa = linear_extrude({ height: 5 }, cagPurisa[0].union(cagPurisa));
-  csgPurisa = csgPurisa.center().translate([0,20,0]);
+  csgPurisa = csgPurisa.center([0,0,0]).translate([0,20,0]);
   csgPurisa = color("orange", csgPurisa);
   
   let fMainframe = Font3D.parse(mainframe_spore_ttf_data.buffer);
   let cagMainframe = Font3D.cagFromString(fMainframe, "World", 14);
   let csgMainframe = linear_extrude({ height: 5 }, cagMainframe[0].union(cagMainframe));
-  csgMainframe = csgMainframe.center();
+  csgMainframe = csgMainframe.center([0,0,0]);
   
   let fEmoji = Font3D.parse(emojisymbols_regular_woff_data.buffer);
   
@@ -35,7 +35,7 @@ function main () {
 
 function drawGlyph(font, number,size,height) {
   let cagFox = Font3D.cagFromGlyph(font,number,size);
-  return linear_extrude({ height:height}, cagFox).center();
+  return linear_extrude({ height:height}, cagFox).center([0,0,0]);
 }
 ```
 
